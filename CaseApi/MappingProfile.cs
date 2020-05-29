@@ -14,6 +14,7 @@ namespace CaseApi
         {
             CreateMap<Account, AccountDTO>();
             CreateMap<Cases, CasesDTO>();
+            CreateMap<CasesForCreationDTO, Cases>();
         }
     }
 }

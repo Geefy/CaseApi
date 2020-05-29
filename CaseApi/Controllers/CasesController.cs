@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using EO.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,7 @@ namespace CaseApi.Controllers
             }
         }
 
-        [HttpGet("{caseId}")]
+        [HttpGet("{caseId}", Name = "CasesById")]
         public IActionResult GetCaseById(int caseId)
         {
             try
@@ -71,6 +72,38 @@ namespace CaseApi.Controllers
             {
                 logger.LogError($"Something went wrong inside GetCaseById action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CreateCase([FromBody]CasesForCreationDTO cases)
+        {
+            try
+            {
+                if (cases == null)
+                {
+                    logger.LogError("Cases object sent from client is null");
+                    return BadRequest("Cases object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    logger.LogError("Invalid cases object sent from client");
+
+                    return BadRequest("Invalid cases object");
+                }
+
+                var casesEntity = mapper.Map<Cases>(cases);
+                repositoryWrapper.Cases.CreateCase(casesEntity);
+                repositoryWrapper.Save();
+
+                var createdCase = mapper.Map<CasesDTO>(casesEntity);
+
+                return CreatedAtAction("CreateCase", createdCase);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Something went wrong inside CreatedCase action: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
             }
         }
     }

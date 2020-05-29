@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CaseApi.Extensions;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
 using System;
@@ -34,6 +35,7 @@ namespace CaseApi
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:sqlConnection"]));
             services.ConfigureRepositoryWrapper();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddControllers();
         }
 

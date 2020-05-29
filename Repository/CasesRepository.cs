@@ -15,6 +15,11 @@ namespace Repository
 
         }
 
+        public void CreateCase(Cases cases)
+        {
+            Create(cases);
+        }
+
         public IEnumerable<Cases> GetAllCases()
         {
             return FindAll().OrderBy(cases => cases.CaseId).ToList();

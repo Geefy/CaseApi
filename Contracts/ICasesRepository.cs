@@ -9,5 +9,7 @@ namespace Contracts
     {
         IEnumerable<Cases> GetAllCases();
         Cases GetCaseById(int id);
+
+        void CreateCase(Cases cases);
     }
 }
