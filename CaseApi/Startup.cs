@@ -33,7 +33,7 @@ namespace CaseApi
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:sqlConnection"]));
+            services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(Configuration["server=WIN-F1KT4RU6626; database=SR2020; Integrated Security=SSPI; User ID=serverUser; Password=Testing1"]));
             services.ConfigureRepositoryWrapper();
             services.AddControllers().AddNewtonsoftJson();
             services.AddControllers();

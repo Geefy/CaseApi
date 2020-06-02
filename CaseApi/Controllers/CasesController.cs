@@ -44,7 +44,7 @@ namespace CaseApi.Controllers
             {
 
                 logger.LogError($"Something went wrong inside GetAllCases action: {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, ex.Message);
             }
         }
 
