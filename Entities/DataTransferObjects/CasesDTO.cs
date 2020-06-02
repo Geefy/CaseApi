@@ -8,7 +8,7 @@ namespace Entities.DataTransferObjects
     {
         public int CaseId { get; set; }
         public string StandName { get; set; }
-        public int? ColorId { get; set; }
+        public string ColorId { get; set; }
         public string CaseDescription { get; set; }
         public string UserOnCase { get; set; }
     }

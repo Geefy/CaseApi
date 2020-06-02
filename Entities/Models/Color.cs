@@ -15,8 +15,7 @@ namespace Entities.Models
             Cases = new HashSet<Cases>();
         }
         [Key]
-        public int Colorid { get; set; }
-        public string ColorName { get; set; }
+        public string Colorid { get; set; }
         public string ColorDescription { get; set; }
 
         public virtual ICollection<Cases> Cases { get; set; }

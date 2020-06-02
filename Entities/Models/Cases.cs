@@ -21,7 +21,7 @@ namespace Entities.Models
         public string CaseDescription { get; set; }
 
         [ForeignKey (nameof(Color))]
-        public int? ColorId { get; set; }
+        public string ColorId { get; set; }
         public virtual Color ColorNavigation { get; set; }
 
         [ForeignKey (nameof(Account))]
