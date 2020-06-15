@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Entities.Models
 {
-    [Table("Account")]
+    [Table("AspNetUsers")]
     public class Account
     {
         public Account()
@@ -15,7 +15,7 @@ namespace Entities.Models
         }
 
         [Required(ErrorMessage = "Username is required")]
-        [StringLength(100, ErrorMessage = "Username can't be longer than 100 characters")]
+        [StringLength(256, ErrorMessage = "Username can't be longer than 256 characters")]
         [Key]
         public string Username { get; set; }
 
@@ -28,9 +28,11 @@ namespace Entities.Models
         public string Lname { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
-        [StringLength(255, ErrorMessage = "Email can't be longer than 255 characters")]
+        [StringLength(256, ErrorMessage = "Email can't be longer than 256 characters")]
         [EmailAddress(ErrorMessage = "Not a valid email address")]
         public string Email { get; set; }
+
+        public string Initials { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         [StringLength(255, ErrorMessage = "Password can't be longer than 255 characters")]

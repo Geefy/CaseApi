@@ -7,10 +7,10 @@ namespace Entities.DataTransferObjects
 {
    public class CasesForCreationDTO
     {
-        [Required(ErrorMessage ="Stand name is required")]
+        [Required(ErrorMessage ="Stand Name is required")]
         public string StandName { get; set; }
-        [Required(ErrorMessage ="ColorId required")]
-        public string ColorId { get; set; }
+        [Required(ErrorMessage ="Color Code required")]
+        public string ColorCode { get; set; }
         [Required(ErrorMessage ="Case needs a description")]
         public string CaseDescription { get; set; }
         public string UserOnCase { get; set; }

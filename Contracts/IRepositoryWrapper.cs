@@ -10,7 +10,8 @@ namespace Contracts
         IAccountRepository Account { get; }
         ICaseHistoryRepository CaseHistory { get; }
         ICasesRepository Cases { get; }
-        IColorRepository Color { get; }
+
+        IStandRepository Stand { get; }
 
         void Save();
     }

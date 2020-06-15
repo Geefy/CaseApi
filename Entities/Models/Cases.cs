@@ -16,16 +16,15 @@ namespace Entities.Models
         }
         [Key]
         public int CaseId { get; set; }
-        public string StandName { get; set; }
 
         public string CaseDescription { get; set; }
+        public string ColorCode { get; set; }
 
-        [ForeignKey (nameof(Color))]
-        public string ColorId { get; set; }
-        public virtual Color ColorNavigation { get; set; }
+        public DateTime LastUpdate{ get; set;  }
 
-        [ForeignKey (nameof(Account))]
-        public string UserOnCase { get; set; }
+        [ForeignKey (nameof(Stand))]
+        public string StandName { get; set; }
+        //public virtual Stand StandNavigation { get; set; }
 
 
         public virtual ICollection<CaseHistory> CaseHistory { get; set; }

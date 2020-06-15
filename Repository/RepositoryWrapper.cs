@@ -13,7 +13,7 @@ namespace Repository
         private IAccountRepository account;
         private ICasesRepository cases;
         private ICaseHistoryRepository caseHistory;
-        private IColorRepository color;
+        private IStandRepository stand;
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {
@@ -55,15 +55,15 @@ namespace Repository
             }
         }
 
-        public IColorRepository Color
+        public IStandRepository Stand
         {
             get
             {
-                if(color == null)
+                if(stand == null)
                 {
-                    color = new ColorRepository(repositoryContext);
+                    stand = new StandRepository(repositoryContext);
                 }
-                return color;
+                return stand;
             }
         }
 
