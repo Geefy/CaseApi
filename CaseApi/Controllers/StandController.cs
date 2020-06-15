@@ -31,16 +31,16 @@ namespace CaseApi.Controllers
         {
             try
             {
-                var stands = repositoryWrapper.Stand.st();
+                var stands = repositoryWrapper.Stand.GetAllStands();
                 logger.LogInfo($"Returned all cases from database");
 
-                var casesResults = mapper.Map<IEnumerable<CasesDTO>>(cases);
-                return Ok(casesResults);
+                var standResults = mapper.Map<IEnumerable<StandDTO>>(stands);
+                return Ok(standResults);
             }
             catch (Exception ex)
             {
 
-                logger.LogError($"Something went wrong inside GetAllCases action: {ex.Message}");
+                logger.LogError($"Something went wrong inside GetAllStands action: {ex.Message}");
                 return StatusCode(500, ex.Message);
             }
         }
