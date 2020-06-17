@@ -9,5 +9,8 @@ namespace Contracts
     {
         IEnumerable<Stand> GetAllStands();
         void CreateStand(Stand stand);
+        Stand GetStandByName(string standName);
+
+        
     }
 }

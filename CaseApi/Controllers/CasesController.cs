@@ -29,6 +29,7 @@ namespace CaseApi.Controllers
             this.mapper = mapper;
         }
 
+        //GET: api/cases
         [HttpGet]
         public IActionResult GetAllCases()
         {
@@ -48,6 +49,7 @@ namespace CaseApi.Controllers
             }
         }
 
+        //GET: api/cases/2
         [HttpGet("{caseId}", Name = "CasesById")]
         public IActionResult GetCaseById(int caseId)
         {
@@ -75,6 +77,7 @@ namespace CaseApi.Controllers
             }
         }
 
+        // POST: api/cases
         [HttpPost]
         public IActionResult CreateCase([FromBody]CasesForCreationDTO cases)
         {
@@ -103,6 +106,69 @@ namespace CaseApi.Controllers
             catch (Exception ex)
             {
                 logger.LogError($"Something went wrong inside CreatedCase action: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+
+        // DELETE: api/cases
+        [HttpDelete("{id}", Name = "DeleteCaseById")]
+        public IActionResult DeleteCase(int id)
+        {
+            try
+            {
+
+                var caseToDelete = repositoryWrapper.Cases.GetCaseById(id);
+
+                if (caseToDelete == null)
+                {
+                    logger.LogError("Case object with id " + id + " was not found in the database");
+                    return BadRequest("Case object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    logger.LogError("Invalid case object sent from client");
+
+                    return BadRequest("Invalid case object");
+                }
+
+                repositoryWrapper.Cases.Delete(caseToDelete);
+                repositoryWrapper.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogError($"Something went wrong inside DeleteCase method with following error:  { ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        //PUT: api/cases
+        [HttpPut]
+        public IActionResult UpdateCase([FromBody] Cases updatedCase)
+        {
+            try
+            {
+
+
+                if (updatedCase == null)
+                {
+                    logger.LogError("Case object is null");
+                    return BadRequest("Case object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Case object is invalid");
+                }
+                repositoryWrapper.Cases.Update(updatedCase);
+                repositoryWrapper.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Something went wrong inside UpdateCaseWithId method with following error:  { ex.Message}");
                 return StatusCode(500, "Internal Server Error");
             }
         }

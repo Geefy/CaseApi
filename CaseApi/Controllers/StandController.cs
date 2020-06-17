@@ -26,6 +26,8 @@ namespace CaseApi.Controllers
             this.mapper = mapper;
         }
 
+
+        // GET: api/stand
         [HttpGet]
         public IActionResult GetAllStands()
         {
@@ -44,6 +46,8 @@ namespace CaseApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        //POST: api/stand
         [HttpPost]
         public IActionResult CreateStand([FromBody]StandDTO stand)
         {
@@ -74,6 +78,40 @@ namespace CaseApi.Controllers
                 logger.LogError($"Something went wrong inside CreateStand action: {ex.Message}");
                 return StatusCode(500, "Internal Server Error");
             }
+        }
+
+        //DELETE: api/stand/A48
+        [HttpDelete("{standName}", Name = "DeleteStandByName")]
+        public IActionResult DeleteStand(string standName)
+        {
+            try
+            {
+
+                var stand = repositoryWrapper.Stand.GetStandByName(standName);
+
+                if (stand == null)
+                {
+                    logger.LogError("Stand object with name " + standName + " was not found in the database");
+                    return BadRequest("Stand object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    logger.LogError("Invalid stand object sent from client");
+
+                    return BadRequest("Invalid stand object");
+                }
+
+                repositoryWrapper.Stand.Delete(stand);
+                repositoryWrapper.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogError($"Something went wrong inside DeleteStand action: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Entities.DataTransferObjects
         public int CaseId { get; set; }
         public string StandName { get; set; }
         public string ColorCode { get; set; }
+        public string LastUpdate { get; set; }
         public string CaseDescription { get; set; }
     }
 }

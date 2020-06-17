@@ -12,13 +12,7 @@ namespace Entities.Models
         [Key]
         public int Id { get; set; }
         public string CaseDescription { get; set; }
-
-        [ForeignKey(nameof(Cases))]
         public int CaseId { get; set; }
-        public virtual Cases Case { get; set; }
-
-        [ForeignKey(nameof(Account))]
         public string Username { get; set; }
-        public virtual Account UsernameNavigation { get; set; }
     }
 }

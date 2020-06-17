@@ -29,5 +29,6 @@ namespace Repository
         {
             return FindByCondition(cases => cases.CaseId.Equals(id)).FirstOrDefault();
         }
+
     }
 }

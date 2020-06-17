@@ -22,5 +22,9 @@ namespace Repository
         {
             return FindAll().OrderBy(stands => stands.StandName).ToList();
         }
+        public Stand GetStandByName(string standName)
+        {
+            return FindByCondition(stand => stand.StandName.Equals(standName)).FirstOrDefault();
+        }
     }
 }
