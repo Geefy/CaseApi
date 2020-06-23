@@ -11,5 +11,6 @@ namespace Entities.DataTransferObjects
         public string ColorCode { get; set; }
         public string LastUpdate { get; set; }
         public string CaseDescription { get; set; }
+        public string UserName { get; set; }
     }
 }

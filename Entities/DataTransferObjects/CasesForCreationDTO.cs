@@ -14,6 +14,6 @@ namespace Entities.DataTransferObjects
         [Required(ErrorMessage ="Case needs a description")]
         public string CaseDescription { get; set; }
         public string LastUpdate { get; set; }
-        public string UserOnCase { get; set; }
+        public string UserName { get; set; }
     }
 }

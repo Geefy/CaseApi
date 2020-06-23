@@ -25,5 +25,7 @@ namespace Entities.Models
         [ForeignKey (nameof(Stand))]
         public string StandName { get; set; }
 
+        public string UserName { get; set; }
+
     }
 }
