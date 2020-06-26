@@ -12,8 +12,6 @@ namespace Entities
         {
 
         }
-
-        public DbSet<Account> Accounts { get; set; }
         public DbSet<Cases> Cases { get; set; }
         public DbSet<CaseHistory> CaseHistories { get; set; }
         public DbSet<Stand> Stands { get; set; }

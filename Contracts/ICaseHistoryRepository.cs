@@ -8,5 +8,6 @@ namespace Contracts
 {
     public interface ICaseHistoryRepository : IRepositoryBase<CaseHistory>
     {
+        IEnumerable<CaseHistory> GetCaseHistoriesByStand(string standName);
     }
 }

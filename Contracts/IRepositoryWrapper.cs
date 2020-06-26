@@ -7,7 +7,6 @@ namespace Contracts
 {
     public interface IRepositoryWrapper
     {
-        IAccountRepository Account { get; }
         ICaseHistoryRepository CaseHistory { get; }
         ICasesRepository Cases { get; }
 

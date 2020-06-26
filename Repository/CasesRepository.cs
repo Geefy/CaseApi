@@ -14,9 +14,23 @@ namespace Repository
         {
 
         }
+        public IEnumerable<Cases> GetCasesByStand(string standName)
+        {
+            List<Cases> returnCases = new List<Cases>();
+            List<Cases> allCases = FindAll().OrderBy(cases => cases.StandName).ToList();
+            foreach (Cases cases in allCases)
+            {
+                if (cases.StandName == standName)
+                {
+                    returnCases.Add(cases);
+                }
+            }
+            return returnCases;
+        }
 
         public void CreateCase(Cases cases)
         {
+            
             Create(cases);
         }
 

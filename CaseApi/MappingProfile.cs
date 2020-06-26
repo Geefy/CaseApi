@@ -12,11 +12,12 @@ namespace CaseApi
     {
         public MappingProfile()
         {
-            CreateMap<Account, AccountDTO>();
             CreateMap<Cases, CasesDTO>();
             CreateMap<CasesForCreationDTO, Cases>();
             CreateMap<StandDTO, Stand>();
             CreateMap<Stand, StandDTO>();
+            CreateMap<CaseHistory, CaseHistoryDTO>();
+            CreateMap<Cases, CaseHistoryDTO>();
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Repository
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private RepositoryContext repositoryContext;
-        private IAccountRepository account;
         private ICasesRepository cases;
         private ICaseHistoryRepository caseHistory;
         private IStandRepository stand;
@@ -18,17 +17,6 @@ namespace Repository
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {
             this.repositoryContext = repositoryContext;
-        }
-        public IAccountRepository Account
-        {
-            get
-            {
-                if(account == null)
-                {
-                    account = new AccountRepository(repositoryContext);
-                }
-                return account;
-            }
         }
 
         public ICaseHistoryRepository CaseHistory

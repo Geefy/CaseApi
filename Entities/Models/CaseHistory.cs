@@ -14,5 +14,8 @@ namespace Entities.Models
         public string CaseDescription { get; set; }
         public int CaseId { get; set; }
         public string Username { get; set; }
+        public string TimeCreated { get; set; }
+        public string StandName { get; set; }
+        public string ColorCode { get; set; }
     }
 }

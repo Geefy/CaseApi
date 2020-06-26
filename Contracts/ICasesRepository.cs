@@ -11,5 +11,6 @@ namespace Contracts
         Cases GetCaseById(int id);
 
         void CreateCase(Cases cases);
+        public IEnumerable<Cases> GetCasesByStand(string standName);
     }
 }
